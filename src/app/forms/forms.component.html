@@ -1,0 +1,49 @@
+<p>forms works!</p>
+
+<!-- <h1> Reactive Form with single input </h1>
+<input type="text" [formControl]="userName" placeholder="username" />
+<hr />
+<h1> Template Driven Form </h1>
+<input type="text" [(ngModel)]="userNameDriven" placeholder="username" /> -->
+
+<!-- <hr />
+
+<h1> Reactive Form with groups input </h1>
+<form [formGroup]="userProfile">
+    <label> Firstname </label>
+    <input formControlName="Firstname" type="text" />
+
+    <label> Lastname </label>
+    <input formControlName="Firstname" type="text" />
+</form> -->
+
+<hr />
+
+<h1> Reactive Form with form builder </h1>
+<form [formGroup]="userProfile" (ngSubmit)="onSubmit()">
+    <label> Firstname </label>
+    <input formControlName="Firstname" type="text" />
+    <span 
+        *ngIf="firstName?.invalid 
+        && firstName?.touched 
+        && firstName?.dirty"
+    > Firstname is invalid  </span>
+    <span 
+    *ngIf="firstName?.pristine"
+    > Please Enter Your Firstname  </span>
+    
+    <label> Lastname </label>
+    <input formControlName="Lastname" type="text" />
+
+    <div formGroupName="address">
+        <label> City </label>
+        <input formControlName="City" type="text" />
+    
+        <label> Street </label>
+        <input formControlName="Street" type="text" />
+    </div>
+
+    <button> Submit </button>
+
+    <p> validation status is {{userProfile.status}} </p>
+</form>

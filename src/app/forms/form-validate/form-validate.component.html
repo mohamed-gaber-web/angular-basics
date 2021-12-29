@@ -1,0 +1,26 @@
+<h1> Form Validate </h1>
+
+<form [formGroup]="signUp" (ngSubmit)="onSubmit()">
+    <input formControlName="Fullname" type="text" placeholder="fullname"  />
+    <span 
+        *ngIf="Fullname?.invalid && Fullname?.touched && Fullname?.dirty " 
+        style="color: red"> Fullname is required </span>
+    <input formControlName="Email" type="email" placeholder="email"  />
+    <span 
+    *ngIf="Email?.errors?.pattern" 
+    style="color: red"> Wrong Pattern </span>
+    <span 
+    *ngIf="Email?.errors?.email" 
+    style="color: red"> Wrong Email</span>
+    <input formControlName="Pass" type="password" placeholder="password" minlength="5"  />
+    
+    <div *ngIf="Pass?.errors?.minlength" style="color: red">
+        Password must be at least 5 characters long.
+    </div>
+    
+
+
+
+    <button> Get Data </button>
+    {{ this.signUp.status }}
+</form>

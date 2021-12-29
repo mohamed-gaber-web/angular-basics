@@ -1,0 +1,11 @@
+<h1> Custome Validate </h1>
+
+<form [formGroup]="signUp" (ngSubmit)="onSubmit()">
+    <input formControlName="Password" type="text" placeholder="Password"  />
+    {{ signUp.get('Password')?.errors | json }}
+    <input formControlName="ConfirmPassword" type="text" placeholder="confirm Password"  />
+    {{ signUp.get('ConfirmPassword')?.errors | json }}
+    <span *ngIf="signUp.errors?.notMatching"style="color: red;"> Passwords are different. They should be equal! </span>
+    <button> Get Data </button>
+    {{ signUp.errors | json }}
+</form>
