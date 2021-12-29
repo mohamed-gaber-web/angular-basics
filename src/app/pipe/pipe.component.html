@@ -1,0 +1,13 @@
+<p>pipe works!</p>
+
+<h1> Hello {{ name | uppercase }} </h1>
+<h1> Hello {{ name2 | lowercase }} </h1>
+
+{{ date | date: 'full' }}
+
+<p> {{ content | slice: 0:10 }} </p>
+
+<p>Super power boost: {{ 5 | exponentialStrength : 10}}</p>
+
+<h1> {{hello | newPipe}} </h1>
+

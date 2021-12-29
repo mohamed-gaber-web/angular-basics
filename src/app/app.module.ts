@@ -12,7 +12,12 @@ import { FormsComponent } from './forms/forms.component';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FormValidateComponent } from './forms/form-validate/form-validate.component';
-import { CustomeValidateComponent } from './forms/custome-validate/custome-validate.component'
+import { CustomeValidateComponent } from './forms/custome-validate/custome-validate.component';
+import { PipeComponent } from './pipe/pipe.component'
+import { ExponentialStrengthPipe } from './pipe/pipes/exponential-strength.pipe';
+import { NewPipePipe } from './pipe/pipes/new-pipe.pipe';
+import { AvatarTestComponent } from './avatar-test/avatar-test.component';
+import { DefaultImagePipe } from './pipe/pipes/default-image.pipe';
 
 let rootReducers = {
   countR: counterReducer, 
@@ -24,7 +29,12 @@ let rootReducers = {
     AppComponent,
     FormsComponent,
     FormValidateComponent,
-    CustomeValidateComponent
+    CustomeValidateComponent,
+    PipeComponent,
+    ExponentialStrengthPipe,
+    NewPipePipe,
+    AvatarTestComponent,
+    DefaultImagePipe
   ],
   imports: [
     BrowserModule,
