@@ -1,0 +1,8 @@
+<h1>basics</h1>
+<p [class.color]="userName"> {{ userName }} </p>
+<p [style.color]="'green'"> {{ userName }} </p>
+<p [style.font-size.px]="'50'"> {{ userName }} </p>
+
+<h3 [class]="'age'"> {{ age }} </h3>
+
+<h1 [ngClass]="{'succes' : userName, 'danger': !userName}"> {{ userName }} </h1>

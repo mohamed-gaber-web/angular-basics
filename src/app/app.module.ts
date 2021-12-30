@@ -18,6 +18,7 @@ import { ExponentialStrengthPipe } from './pipe/pipes/exponential-strength.pipe'
 import { NewPipePipe } from './pipe/pipes/new-pipe.pipe';
 import { AvatarTestComponent } from './avatar-test/avatar-test.component';
 import { DefaultImagePipe } from './pipe/pipes/default-image.pipe';
+import { BasicsComponent } from './basics/basics.component';
 
 let rootReducers = {
   countR: counterReducer, 
@@ -34,7 +35,8 @@ let rootReducers = {
     ExponentialStrengthPipe,
     NewPipePipe,
     AvatarTestComponent,
-    DefaultImagePipe
+    DefaultImagePipe,
+    BasicsComponent
   ],
   imports: [
     BrowserModule,
