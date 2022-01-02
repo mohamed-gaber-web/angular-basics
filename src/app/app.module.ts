@@ -9,6 +9,7 @@ import { counterReducer } from './counter.reducer';
 import { productReducer } from './ngrx-arr-test/arr.reducer';
 import { productReducerTest } from './ngrx-arr-test/product.reducer';
 import { FormsComponent } from './forms/forms.component';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { FormValidateComponent } from './forms/form-validate/form-validate.component';
@@ -19,6 +20,9 @@ import { NewPipePipe } from './pipe/pipes/new-pipe.pipe';
 import { AvatarTestComponent } from './avatar-test/avatar-test.component';
 import { DefaultImagePipe } from './pipe/pipes/default-image.pipe';
 import { BasicsComponent } from './basics/basics.component';
+import { CoursesComponent } from './http/courses/courses.component';
+import { AppInterceptors } from './app.interceptors';
+import { ErrorHanldeInterceptor } from './error-hanlde.interceptor';
 
 let rootReducers = {
   countR: counterReducer, 
@@ -36,18 +40,23 @@ let rootReducers = {
     NewPipePipe,
     AvatarTestComponent,
     DefaultImagePipe,
-    BasicsComponent
+    BasicsComponent,
+    CoursesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    HttpClientModule,
     StoreModule.forRoot({productRed: productReducerTest}), // { key: reducerName }
     // StoreModule.forRoot({ productR:  productReducer}), // { key: reducerName }
 
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AppInterceptors, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorHanldeInterceptor, multi: true} 
+  ], // create more interceptors { one }, { tow }
   bootstrap: [AppComponent]
 })
 export class AppModule { }
