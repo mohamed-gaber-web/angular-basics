@@ -23,6 +23,13 @@ import { BasicsComponent } from './basics/basics.component';
 import { CoursesComponent } from './http/courses/courses.component';
 import { AppInterceptors } from './app.interceptors';
 import { ErrorHanldeInterceptor } from './error-hanlde.interceptor';
+import { LifecycleComponent } from './lifecycle/lifecycle.component';
+import { SingleProjectComponent } from './content-projection/single-project/single-project.component';
+import { LoginComponent } from './component/login/login.component';
+import { SignUpComponent } from './component/sign-up/sign-up.component';
+import { HomeComponent } from './component/home/home.component';
+import { NotFoundComponent } from './component/not-found/not-found.component';
+import { PostsComponent } from './component/posts/posts.component';
 
 let rootReducers = {
   countR: counterReducer, 
@@ -41,7 +48,14 @@ let rootReducers = {
     AvatarTestComponent,
     DefaultImagePipe,
     BasicsComponent,
-    CoursesComponent
+    CoursesComponent,
+    LifecycleComponent,
+    SingleProjectComponent,
+    LoginComponent,
+    SignUpComponent,
+    HomeComponent,
+    NotFoundComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,

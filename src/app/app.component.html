@@ -6,4 +6,30 @@
 
 <button (click)="reset()"> Reset </button> -->
 
-<app-courses></app-courses>
+<!-- <h1 #h1Tag> Hello Parent </h1> -->
+
+<!-- <app-lifecycle #childView [myTitle]=title>
+    <h1> Content Projection </h1>
+    <p> Hello from component lifecycle </p>
+</app-lifecycle> -->
+<!-- <app-single-project>
+    <p>Is content projection cool?</p>
+    <p question>Let's learn about content projection!</p>
+</app-single-project> -->
+
+<!-- <ng-container *ngIf="true">
+    <app-single-project *ngFor="let item of [1, 2, 3]; let i = index; ">
+        <p>Is content projection cool? {{ item + ' ' + i }}</p>
+    </app-single-project>
+</ng-container> -->
+
+<nav>
+    <ul>
+        <li> <a [queryParams]="{ auth: 'true' }" routerLink="login" routerLinkActive="active"> Login </a> </li>
+        <li>  <a [routerLink]="['sign-up']" routerLinkActive="active" fragment="sign" #signUpRef="routerLinkActive"> Sign up </a> </li>
+        is Active: {{ signUpRef.isActive }}
+    </ul>
+</nav>
+
+
+<router-outlet></router-outlet>

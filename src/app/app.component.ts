@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { decrement, increment, reset } from './counter.action';
+import { LifecycleComponent } from './lifecycle/lifecycle.component';
 import { IProduct } from './model/product.model';
 import { ADD_PRODUCT } from './ngrx-arr-test/product.reducer';
 
@@ -16,8 +17,13 @@ import { ADD_PRODUCT } from './ngrx-arr-test/product.reducer';
 })
 export class AppComponent {
 
+  // @ViewChild(ref) name: ElementRef;
+  @ViewChild('h1Tag', { static: false }) paretntTag: ElementRef;
+  @ViewChild('childView', { static: false, read: ElementRef }) lifeCycleComponent: LifecycleComponent;
+
   // count$: Observable<number>;
   products$: Observable<IProduct[]>;
+  title: string = "Hello Lifcycle";
 
   constructor(private store: Store<{ countR: number, productRed: [] }>) {
     // this.count$ = store.select('countR');
@@ -26,6 +32,15 @@ export class AppComponent {
     store.subscribe(d => {
       console.log(d);
     })
+  }
+
+  ngOnInit(): void {
+    // when use @viewchild here { static: true }
+  }
+
+  ngAfterViewInit(): void {
+    console.log('form parent component', 
+    this.lifeCycleComponent);
   }
 
   // increment() {
