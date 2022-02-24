@@ -25,11 +25,42 @@
 
 <nav>
     <ul>
+
         <li> <a [queryParams]="{ auth: 'true' }" routerLink="login" routerLinkActive="active"> Login </a> </li>
+        <li> <a routerLink="user" routerLinkActive="active"> Users </a> </li>
         <li>  <a [routerLink]="['sign-up']" routerLinkActive="active" fragment="sign" #signUpRef="routerLinkActive"> Sign up </a> </li>
+        <li>  <a [routerLink]="['post']" routerLinkActive="active"> posts </a> </li>
+
         is Active: {{ signUpRef.isActive }}
     </ul>
 </nav>
 
+<hr />
+
+<!-- <app-counter></app-counter> -->
+
+<!-- <app-simple>
+    <p cont1> This is simple content progection </p>
+    <p cont2> This is simple content progection </p>
+    <p cont3> This is simple content progection </p>
+</app-simple> -->
+
+<hr />
+
+<!-- 
+    Property binding
+    1* [] === binding
+    2* one direction 
+-->
+
+<button [disabled]="!form"> Save </button>
+<h1 [ngClass]="head1Class"> Hello </h1>
+
+<p [style.font-size]="styleFontSize"> the type of the input is {{ type }} </p>
+
+<!-- <app-simple>
+    <h2> title </h2>
+    <p> Content </p>
+</app-simple> -->
 
 <router-outlet></router-outlet>

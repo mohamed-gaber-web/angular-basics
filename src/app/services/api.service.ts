@@ -1,8 +1,10 @@
 import { Injectable } from "@angular/core";
 
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 
 import { environment as env } from "src/environments/environment";
+import { catchError } from "rxjs/operators";
+import { Observable, throwError } from "rxjs";
 
 @Injectable({ providedIn: 'root', })
 
@@ -20,6 +22,14 @@ export class ApiService {
         } })
     }
 
+    getPosts(): Observable<any> {
+        // ** why data return obersvable ? because handle async data.
+        return this.http.get('https://jsonplaceholder.typicode.com/posts')
+            // !! handle error from service localy !!
+            .pipe(catchError((error) => {
+                return throwError('handle error insdie service localy', error);  
+            }))
+    }
 }
 
 /**

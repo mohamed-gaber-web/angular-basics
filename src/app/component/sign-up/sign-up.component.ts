@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -8,15 +8,18 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class SignUpComponent implements OnInit {
 
-  constructor(public activatedRoute: ActivatedRoute) { 
+  constructor(public activatedRoute: ActivatedRoute, private router: Router) { 
     console.log(this.activatedRoute);
     this.activatedRoute.fragment.subscribe(d => {
       console.log('fragnment', d);
     })
-    
    }
 
   ngOnInit(): void {
+  }
+
+  goToLogin() {
+    this.router.navigateByUrl('login'); // navigate(['', extras])
   }
 
 }

@@ -1,1 +1,11 @@
-<p>posts works!</p>
+<h1> posts </h1>
+
+<h3 *ngFor="let postItem of posts"> <a [routerLink]="['post-details/'+ postItem.id]"> {{ postItem.title }} </a> </h3>
+
+
+<li>  <a [routerLink]="['add-post']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+    true}"> Add Post</a> </li>
+<li>  <a [routerLink]="['edit-post']" routerLinkActive="active" [routerLinkActiveOptions]="{exact:
+    true}"> Edit Post </a> </li>
+
+<router-outlet></router-outlet>

@@ -15,23 +15,48 @@ export class ErrorHanldeInterceptor implements HttpInterceptor {
 
   constructor() {}
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    return next.handle(request)
-      .pipe(
-        catchError((error: HttpErrorResponse) => {
-          console.log(error);
-          
-          let errorMsg = '';
-          if (error.error instanceof ErrorEvent) {
-            console.log('this is client side error');
-            errorMsg = `Error: ${error.error.message}`;
+  // intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  //   return next.handle(request)
+  //     .pipe(
+  //       catchError((error: HttpErrorResponse) => {
+  //         let errorMsg = '';
+  //         if (error.error instanceof ErrorEvent) {
+  //           console.log('this is client side error');
+  //           errorMsg = `Error: ${error.error.message}`;
+  //         }
+  //         else {
+  //           console.log('this is server side error');
+  //           errorMsg = `Error Code: ${error.status},  Message: ${error.message}`;
+  //         }
+  //         console.log(errorMsg);
+  //         return throwError(errorMsg);
+  //       })
+  //     )
+  // }
+  
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    return next.handle(req).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.log('handle error globaly in http intercptor', '-', error);
+        if (error.error instanceof ErrorEvent) {
+          // console.log('error event');
+        } else {
+          switch (error.status) {
+            case 401:
+              console.log('route to login page this user is Unauthorized because staus code is ' + error.status);
+              break;
+            
+            case 403:
+              console.log('route to login page this user is Unauthorized because staus code is ' + error.status);
+              break;
+            
+              case 404:
+                console.log('api is proplem');
+                break;
+              
           }
-          else {
-            console.log('this is server side error');
-            errorMsg = `Error Code: ${error.status},  Message: ${error.message}`;
-          }
-          console.log(errorMsg);
-          return throwError(errorMsg);
+        }
+        return throwError(error);
         })
       )
   }
